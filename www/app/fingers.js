@@ -98,12 +98,12 @@
             delete fingers[fingerId];
           }
         }
-        document.getElementById('showHands').addEventListener('mousedown', function() {
-          document.getElementById('app').setAttribute('class','show-hands');
-        }, false);
-        document.getElementById('hideHands').addEventListener('mousedown', function() {
-          document.getElementById('app').setAttribute('class','');
-        }, false);
+//        document.getElementById('showHands').addEventListener('mousedown', function() {
+//          document.getElementById('app').setAttribute('class','show-hands');
+//        }, false);
+//        document.getElementById('hideHands').addEventListener('mousedown', function() {
+//          document.getElementById('app').setAttribute('class','');
+//        }, false);
       });
 
       // Leap Off

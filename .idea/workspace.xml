@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4dda9ee-bfba-4b0f-9186-a6e43ec8b9b1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/cover.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/css/my_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/app/fingers.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/app/fingers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/home.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,14 +52,18 @@
       </file>
       <file leaf-file-name="fingers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/fingers.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="105" column="20" lean-forward="true" selection-start-line="100" selection-start-column="9" selection-end-line="105" selection-end-column="20" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+            <state relative-caret-position="170">
+              <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -117,12 +109,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/www/app/fingers.js" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/css/my_style.css" />
-        <option value="$PROJECT_DIR$/www/home.html" />
         <option value="$PROJECT_DIR$/www/css/cover.css" />
+        <option value="$PROJECT_DIR$/www/app/fingers.js" />
+        <option value="$PROJECT_DIR$/www/home.html" />
       </list>
     </option>
   </component>
@@ -155,6 +147,12 @@
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SITLLeapMotion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SITLLeapMotion" type="462c0819:PsiDirectoryNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -164,6 +162,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ZeroInside\Documents\GitHub\SITLLeapMotion\www\app" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -242,10 +245,10 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19033675" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19033675" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41335455" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.41335455" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -617,9 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/fingers.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/app/css/my_style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -641,10 +641,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/fingers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="105" column="20" lean-forward="true" selection-start-line="100" selection-start-column="9" selection-end-line="105" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+        <state relative-caret-position="170">
+          <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
         </state>
       </provider>
     </entry>
