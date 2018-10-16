@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard : Garuda Technology Development</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/cover.css" rel="stylesheet">
+    <!-- Finger CSS -->
+    <link href="/static/css/my_style.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+        <script src="/static/node_modules/leapjs/leap-0.6.4.js"></script>
+    <script src="/static/app/fingers.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Garuda APTRG</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Maps</a></li>
+                  <li><a href="#">Maps</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Hand Movement</h1>
+            <!--<p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
+            <!--<p class="lead">-->
+              <!--<a href="#" class="btn btn-lg btn-default">Learn more</a>-->
+            <!--</p>-->
+          </div>
+
+          <div id="app" class="show-hands">
+            <button id="showHands" type="hidden">Show Hands</button>
+            <button id="hideHands" type="hidden">hide Hands</button>
+            <div id="scene">
+              <div id="finger" class="cube finger">
+                <div class="face tp"></div>
+                <div class="face lt"></div>
+                <div class="face rt"></div>
+                <div class="face ft"></div>
+                <div class="face bk"></div>
+              </div>
+               <div id="sphere" class="cube sphere">
+                <div class="face tp"></div>
+                <div class="face lt"></div>
+                <div class="face rt"></div>
+                <div class="face ft"></div>
+                <div class="face bk"></div>
+              </div>
+            </div>
+           </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Copyright APTRG</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script> -->
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Dashboad : Garuda Technology Development</title>
+    <script src="/static/node_modules/leapjs/leap-0.6.4.js"></script>
+    <script src="/static/app/fingers.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/my_style.css">
+  </head>
+  <body>
+    <div id="app" class="show-hands">
+        <button id="showHands" type="hidden">Show Hands</button>
+        <button id="hideHands" type="hidden">hide Hands</button>
+      <div id="scene">
+        <div id="finger" class="cube finger">
+          <div class="face tp"></div>
+          <div class="face lt"></div>
+          <div class="face rt"></div>
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+        </div>
+        <div id="sphere" class="cube sphere">
+          <div class="face tp"></div>
+          <div class="face lt"></div>
+          <div class="face rt"></div>
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
