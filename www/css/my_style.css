@@ -4,7 +4,7 @@
       }
       #app {
         position: absolute;
-        width: 50%;
+        width: 100%;
         height: 100%;
         font-size: 100%;
         overflow: hidden;
@@ -152,4 +152,26 @@
         -moz-transform: rotateY(90deg) translateX(-1em) translateZ(1em);
         transform: rotateY(90deg) translateX(-1em) translateZ(1em);
         height: 3em;
+      }
+
+      .vehicle_block {
+        padding= 30px;
+      }
+
+      span.vehiclestat {
+        display: inline; /* the default for span */
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+      }
+      .vehicleString {
+        padding-right= 10px;
+      }
+
+      .flight_position {
+      color: white
+      }
+
+      .maps {
+        height : 200px
       }

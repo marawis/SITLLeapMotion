@@ -19,6 +19,8 @@
     <link href="/static/css/cover.css" rel="stylesheet">
     <!-- Finger CSS -->
     <link href="/static/css/my_style.css" rel="stylesheet">
+    <!-- Maps CSS-->
+    <link rel="stylesheet" href="/static/css/leaflet.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -29,11 +31,13 @@
 
         <script src="/static/node_modules/leapjs/leap-0.6.4.js"></script>
     <script src="/static/app/fingers.js"></script>
+    <!-- ws only -->
+    <!--<script src="/static/app/web_socket_leap.js"></script>-->
 
   </head>
 
+  <!--<body onload="init()">-->
   <body>
-
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -44,24 +48,58 @@
             <div class="inner">
               <h3 class="masthead-brand">Garuda APTRG</h3>
               <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Maps</a></li>
-                  <li><a href="#">Maps</a></li>
-                </ul>
+                <div class="vehicle_block">
+                      <span class="vehiclestat" id="gps"> GPS Status : not fix </span>
+                      <span class="vehiclestat" id="battery"> Battery : 0 % </span>
+                      <span class="vehiclestat" id="altitude">Altitude : 0 m </span>
+                      <span class="vehiclestat" id="mode">Flight Mode : null </span>
+                      <span class="vehiclestat" id="grnd_speed">Ground Speed: 0 m/s </span>
+                    </div>
               </nav>
             </div>
+
           </div>
+          <!--<div class="masthead">-->
+            <!--<div class="vehicle_block">-->
+              <!--<span class="vehiclestat" id="gps"> GPS Status : not fix </span>-->
+              <!--<span class="vehiclestat" id="battery"> Battery : 0 % </span>-->
+              <!--<span class="vehiclestat" id="altitude">Altitude : 0 m </span>-->
+              <!--<span class="vehiclestat" id="mode">Flight Mode : null </span>-->
+            <!--</div>-->
+
+          <!--</div>-->
 
           <div class="inner cover">
-            <h1 class="cover-heading">Hand Movement</h1>
+            <!--<h1 class="cover-heading">Hand Movement</h1>-->
             <!--<p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
             <!--<p class="lead">-->
               <!--<a href="#" class="btn btn-lg btn-default">Learn more</a>-->
             <!--</p>-->
           </div>
 
-          <div id="app" class="show-hands">
+
+          <div class="mastfoot">
+
+            <div class="flight_position" id="flight_position">
+              <div class="row">
+
+                <div class="col-md-6">
+                  Live Streaming :
+                </div>
+
+                <div id="map" class="maps col-md-6">
+
+                  Maps :
+                </div>
+              </div>
+            </div>
+            <div class="inner">
+              <p>Copyright APTRG</p>
+            </div>
+          </div>
+
+        </div>
+         <div id="app" class="show-hands">
             <div id="scene">
               <div id="finger" class="cube finger">
                 <div class="face tp"></div>
@@ -80,14 +118,17 @@
             </div>
            </div>
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Copyright APTRG</p>
-            </div>
-          </div>
-
-        </div>
-
+            <!--ws part -->
+            <!--<h1>Leap WebSocket JSON Viewer</h1>-->
+            <!--<button id="pause" onclick="togglePause()">Pause</button>-->
+            <!--<input type="checkbox" id="pauseOnGesture" onclick="pauseForGestures()">Pause on gesture</input>-->
+            <!--<div id="connection">WebSocket not connected</div>-->
+            <!--<div id="main" style="visibility:hidden">-->
+              <!--<h3>Last WebSocket event:</h3>-->
+              <!--<div id="eventoutput"></div>-->
+              <!--<h3>JSON Frame data:</h3>-->
+              <!--<div id="frameoutput"></div>-->
+            <!--</div>-->
       </div>
 
     </div>
@@ -98,6 +139,9 @@
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script> -->
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-
+    <script src="/static/js/paho-mqtt.js"></script>
+    <script src="/static/app/mav.js"></script>
+    <!-- MAPS -->
+    <script src="/static/js/leaflet.js"></script>
   </body>
 </html>

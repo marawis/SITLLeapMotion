@@ -17,6 +17,7 @@ To Do :
 """
 
 import sys
+import json
 sys.path.insert(0, "lib/x64") # initialize the library
 
 import Leap, sys, thread, time , math , operator , dronekit
@@ -24,12 +25,16 @@ from Leap import  SwipeGesture
 from dronekit import connect, VehicleMode, LocationGlobalRelative, Command, LocationGlobal
 from pymavlink import mavutil
 import os , os.path
+from time import sleep
 
 # mqtt part
 import paho.mqtt.client as mqtt
 # define IP and Port MQTT Broker
-brokerHost = "192.168.1.2"
+brokerHost = "localhost"
 port = 1883
+
+topic_cmd = "GARUDA_01/cmd" # result track
+topic_mav = "GARUDA_01/mav" # data mavlink
 
 # webserver part
 import cherrypy
@@ -37,26 +42,32 @@ from ws4py.server.cherrypyserver import WebSocketPlugin, WebSocketTool
 from ws4py.websocket import EchoWebSocket
 from ws4py.client.threadedclient import WebSocketClient
 
+# set Interval
+from threading import Timer
+
+
+vehicle_is_flying = False
+
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+ str(rc))
     # subscribe the topic "ekg/device1/signal"
     # subTopic = "ekg/+/signal"  # + is wildcard for all string to that level
     subTopic = "flex/degree"
-    print "Subscribe topic ", subTopic
+    print("Subscribe topic ", subTopic)
     clientMQTT.subscribe(subTopic)
 
 def on_message(client, userdata, message):
     global gnd_speed
-    print "message topic=", message.topic , " - qos=", message.qos , " - flag=", message.retain
+    print("message topic=", message.topic , " - qos=", message.qos , " - flag=", message.retain)
     receivedMessage = str(message.payload.decode("utf-8"))
-    print "received message = " , receivedMessage
+    print("received message = " , receivedMessage)
 
     degree = float(receivedMessage)
     gnd_speed = setGroundSpeed(degree) # convert degree to scaled ground speed
     print(gnd_speed)
 
 # create client object
-clientMQTT = mqtt.Client("client-Server")
+clientMQTT = mqtt.Client("server-Leap")
 
 
 ## MAVLink Part
@@ -65,7 +76,7 @@ print('Connecting...')
 vehicle = connect('udp:127.0.0.1:14551') # sitl mode
 #vehicle = connect("COM23",baud=57600)
 # -- Setup the commanded flying speed
-gnd_speed = 0.5  # [m/s]
+gnd_speed = 10 # [m/s]
 
 
 # -- Define arm and takeoff
@@ -79,7 +90,7 @@ def arm_and_takeoff(altitude):
     vehicle.armed = True
 
     while not vehicle.armed:
-        print "waited motor armed."
+        print("waited motor armed.")
         vehicle.armed = True
         time.sleep(1)
 
@@ -161,24 +172,48 @@ def condition_yaw(heading,  direction, relative=False ):
     vehicle.send_mavlink(msg)
     vehicle.flush()
 
+#Callback to print the location in global frames. 'value' is the updated value
+latitude  = 0
+longitude = 0
+battery = 0
+altitude = 0
+velocity = 0
+flight_mode = ''
+send_mav = {}
+gps_sat = 0
+gps_fix = 0
+gps_home = 0
+def location_callback(self, attr_name, value):
+     print "Location (Relative): ", value
+     global latitude,longitude,altitude,battery,velocity,flight_mode,gps_fix,gps_sat
+     latitude = value.lat
+     longitude = value.lon
+     altitude = value.alt
+     #print(vehicle.battery)
+     battery = vehicle.battery.level
+     velocity = vehicle.groundspeed
+     flight_mode = vehicle.mode.name
+     gps_fix = vehicle.gps_0.fix_type
+     gps_sat = vehicle.gps_0.satellites_visible
+
 
 # Leap Motion Part
 class SampleListener(Leap.Listener):
     def on_init(self, controller):
-        print "Initialized"
+        print("Initialized")
 
     def on_connect(self, controller):
-        print "Motion Sensor Connected"
+        print("Motion Sensor Connected")
 
         # Enable gestures
         controller.enable_gesture(Leap.Gesture.TYPE_SWIPE);
 
     def on_disconnect(self, controller):
         # Note: not dispatched when running in a debugger.
-        print "Disconnected"
+        print("Disconnected")
 
     def on_exit(self, controller):
-        print "Exited"
+        print("Exited")
 
     def on_frame(self, controller):
         # Get the most recent frame and report some basic information
@@ -208,10 +243,13 @@ class SampleListener(Leap.Listener):
 
                     if(swipeDir.y > 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
                         print("Take off")
-                        arm_and_takeoff(1)
+                        arm_and_takeoff(10)
+                        vehicle_is_flying = True
                     elif(swipeDir.y < 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
                         print("Landing")
                         vehicle.mode = VehicleMode("RTL")
+                        vehicle_is_flying = False
+
 
 
 # analyze Dircetion
@@ -220,24 +258,38 @@ def analyzeDirection(ypr):
         # ke depan
         print("pitch up")
         set_velocity_body(vehicle, -gnd_speed, 0, 0)
+        # publish to MQTT
+        clientMQTT.publish(topic_cmd , "0")
+
     elif(ypr[1] < 0 and (math.fabs(ypr[1]) > (math.fabs(ypr[0]) and math.fabs(ypr[2])))):
         # ke belakang
         print("pitch down")
         set_velocity_body(vehicle, gnd_speed, 0, 0)
+        clientMQTT.publish(topic_cmd, "1")
+
     elif(ypr[2] > 0 and (math.fabs(ypr[2]) > (math.fabs(ypr[1]) and math.fabs(ypr[0])))):
         # ke kiri
         print("roll left")
         set_velocity_body(vehicle, 0, -gnd_speed, 0)
+        clientMQTT.publish(topic_cmd, "2")
+
     elif (ypr[0] > 0 and (math.fabs(ypr[0]) > (math.fabs(ypr[1]) and math.fabs(ypr[2])))):
         print("Yaw Right")
         condition_yaw(gnd_speed*0.5,'right',True)
+        clientMQTT.publish(topic_cmd, "3")
+
     elif (ypr[0] < 0 and (math.fabs(ypr[0]) > (math.fabs(ypr[1]) and math.fabs(ypr[2])))):
         print("Yaw Left")
         condition_yaw(gnd_speed*0.5,'left',True)
+        clientMQTT.publish(topic_cmd, "4")
+
     elif (ypr[2] < 0 and (math.fabs(ypr[2]) > (math.fabs(ypr[1]) and math.fabs(ypr[0])))):
         # ke kanan
         print("roll right")
         set_velocity_body(vehicle, 0, gnd_speed, 0)
+        clientMQTT.publish(topic_cmd, "5")
+
+    sleep(0.2)
 
 # convert degree to ground speed
 def setGroundSpeed(degree):
@@ -259,14 +311,14 @@ def setGroundSpeed(degree):
 
 class DummyClient(WebSocketClient):
     def opened(self):
-        print "Connect ws ..."
+        print("Connect ws ...")
 
     def closed(self, code, reason=None):
-        print "Closed down", code, reason
+        print("Closed down", code, reason)
 
     def received_message(self, m):
         print('Received Message : ')
-        print m
+        print(m)
         #if len(m) == 175:
         #    self.close(reason='Bye bye')
 
@@ -275,6 +327,8 @@ def main():
     # Create a sample listener and controller
     listener = SampleListener()
     controller = Leap.Controller()
+    # Add a callback `location_callback` for the `global_frame` attribute.
+    vehicle.add_attribute_listener('location.global_relative_frame', location_callback)
 
     # Have the sample listener receive events from the controller
     controller.add_listener(listener)
@@ -283,7 +337,7 @@ def main():
     clientMQTT.on_message = on_message
     clientMQTT.on_connect = on_connect
     # connection established
-    print "connecting to broker", brokerHost
+    print("connecting to broker", brokerHost)
     clientMQTT.connect(brokerHost, port)  # connect to broker
 
     # webserver
@@ -304,14 +358,14 @@ def main():
     """
 
     # Keep this process running until Enter is pressed
-    print "Press Enter to quit..."
+    print("Press Enter to quit...")
     try:
         sys.stdin.readline()
     except KeyboardInterrupt:
         pass
     finally:
         # Remove the sample listener when done
-        ws.close()
+        #ws.close()
         controller.remove_listener(listener)
 
 def setup_cherry():
@@ -327,18 +381,38 @@ def setup_cherry():
     }
     return conf
 
-# webserver
 
+# non blocking interval
+
+def send_MAV_over_MQTT():
+    send_mav = {
+        "gps": {
+                    "latitude": latitude,
+                    "longitude": longitude,
+                    "gps_fix" : gps_fix,
+                    "gps_sat" : gps_sat
+                },
+        "battery": battery,
+        "flight_mode": flight_mode,
+        "altitude": altitude,
+        "velocity": velocity
+    }
+    print(send_mav)
+    send_mav_json = json.dumps(send_mav)
+    clientMQTT.publish(topic_mav,send_mav_json)
+    Timer(1.0, send_MAV_over_MQTT).start()
+
+Timer(1.0, send_MAV_over_MQTT).start() # after 1 seconds, "hello, world" will be printed
+
+# webserver
 class webserver(object):
     @cherrypy.expose()
     def index(self):
-        return open('www/index.html')
+        return open('www/home.html')
 
     @cherrypy.expose()
     def home(self):
         return open('www/home.html')
-
-
 
 if __name__ == "__main__":
     main() # start the leap and mqtt
