@@ -377,7 +377,7 @@ def main():
     clientMQTT.connect(brokerHost, port)  # connect to broker
 
     # webserver
-    cherrypy.config.update({'server.socket_port': 8080}) # socket in web 9000
+    cherrypy.config.update({'server.socket_port': 8000}) # socket in web 9000
     #WebSocketPlugin(cherrypy.engine).subscribe()
     #cherrypy.tools.websocket = WebSocketTool()
     cherrypy.quickstart(webserver(), '/' , setup_cherry())  # start the webserver
@@ -469,6 +469,10 @@ class webserver(object):
     @cherrypy.expose()
     def home(self):
         return open('www/home.html')
+
+    @cherrypy.expose()
+    def fpv(self):
+        raise cherrypy.HTTPRedirect('http://127.0.0.1:5050/video_feed')
 
 if __name__ == "__main__":
     main() # start the leap and mqtt

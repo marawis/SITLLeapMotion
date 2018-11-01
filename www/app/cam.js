@@ -1,8 +1,8 @@
 $(function() {
    $("#cam").networkCamera({
-        url: 'https://www.google.com/logos/doodles/2015/fifa-women-world-cup-winner-tbd-country-1-5173664725073920.3-hp.jpg',
+        url: 'http://localhost:5050/video_feed',
         streaming: true
       });
 
-    $('#cam').networkCamera('stream');
+    //$('#cam').networkCamera('stream');
 });
