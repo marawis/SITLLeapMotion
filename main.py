@@ -35,7 +35,10 @@ port = 1883
 
 topic_cmd = "GARUDA_01/cmd" # result track
 topic_mav = "GARUDA_01/mav" # data mavlink
+topic_leap = "GARUDA_01/leap" #data leap
 max_altitude = 15 # maximum altitude
+# -- Setup the commanded flying speed
+gnd_speed = 0.5 # [m/s]
 
 # webserver part
 import cherrypy
@@ -76,8 +79,7 @@ clientMQTT = mqtt.Client("server-Leap")
 print('Connecting...')
 vehicle = connect('udp:127.0.0.1:14551') # sitl mode
 #vehicle = connect("COM23",baud=57600)
-# -- Setup the commanded flying speed
-gnd_speed = 10 # [m/s]
+
 
 
 # -- Define arm and takeoff
@@ -202,6 +204,8 @@ def location_callback(self, attr_name, value):
      else:
          vehicle_is_flying = False
 
+def obj_to_dict(obj):
+   return obj.__dict__
 
 # Leap Motion Part
 class SampleListener(Leap.Listener):
@@ -224,18 +228,30 @@ class SampleListener(Leap.Listener):
     def on_exit(self, controller):
         print("Exited")
 
+
+
     def on_frame(self, controller):
         # Get the most recent frame and report some basic information
         frame = controller.frame()
         global vehicle_is_flying
-
+        #s = json.dumps(frame, default = obj_to_dict)
+        #clientMQTT.publish(topic_leap,s)
+        #print vars(frame.hands)
         # check just one hand
+        # print(frame.pointables)
+
+       # for point in frame.pointables:
+        #    po = point
+        #    print(po.positions)
+
+
         if (len(frame.hands) == 1):
 
             if(vehicle_is_flying and vehicle.mode.name == "GUIDED"):
                 for hand in frame.hands:
+
                     direction = hand.direction
-                    # print(direction)
+                    print(direction)
 
                     normal = hand.palm_normal
                     pitch = direction.pitch * Leap.RAD_TO_DEG
@@ -368,6 +384,9 @@ def main():
 
     # Have the sample listener receive events from the controller
     controller.add_listener(listener)
+
+    # working on background
+    controller.set_policy(Leap.Controller.POLICY_BACKGROUND_FRAMES)
 
     # set callback
     clientMQTT.on_message = on_message

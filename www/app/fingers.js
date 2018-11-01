@@ -12,6 +12,7 @@
 
       // Leap Start
       Leap.loop(function(frame) {
+        console.log(frame);
         var seenFingers = {};
         var handIds = {};
         if (frame.hands === undefined ) {
@@ -19,6 +20,7 @@
         } else {
           var handsLength = frame.hands.length;
         }
+
 
         for (var handId = 0, handCount = handsLength; handId != handCount; handId++) {
           var hand = frame.hands[handId];
@@ -105,5 +107,9 @@
 //          document.getElementById('app').setAttribute('class','');
 //        }, false);
       });
+
+      Leap.loopController.setBackground(true)
+
+
 
       // Leap Off
