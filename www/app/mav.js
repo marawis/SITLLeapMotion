@@ -46,11 +46,12 @@ $(function() {
         json_res = JSON.parse(message.payloadString)
         console.log(json_res)
         // draw html dom
-        $("#gps").html("GPS Status : " + gps_status(json_res.gps.gps_fix))
-        $("#battery").html("Battery : " + json_res.battery + " %")
-        $("#mode").html("Flight Mode : " + json_res.flight_mode)
-        $("#gnd_speed").html("Ground Speed : " + json_res.velocity + " m/s" )
-        $("#altitude").html("Altitude : " + json_res.altitude + " m")
+        $("#gps").html("<i class='fas fa-location-arrow'></i> " + gps_status(json_res.gps.gps_fix))
+        $("#battery").html( battery_icon(json_res.battery) + json_res.battery + " %")
+        $("#mode").html("<i class='fas fa-code-branch'></i> " + json_res.flight_mode)
+        $("#gnd_speed").html("<i class='fas fa-tachometer-alt'></i> " +  json_res.velocity.toFixed(2) + " m/s" )
+        $("#altitude").html( alt_icon(json_res.altitude,json_res.max_altitude) + json_res.altitude + " m")
+        $("#flight_time").html('<i class="fas fa-clock"></i> ' + json_res.flight_time)
 
         if(!maps_status){
             console.log("Draw Maps")
@@ -72,6 +73,34 @@ $(function() {
             return '2D fix'
         else if (type == 3)
             return '3D fix'
+    }
+
+    function battery_icon(battery_level){
+        if(battery_level >= 100){
+            return "<i class='fas fa-battery-full'></i> "
+        }else if (battery_level >= 75) {
+            return "<i class='fas fa-battery-three-quarters'></i> "
+        } else if (battery_level >= 50) {
+            return "<i class='fas fa-battery-half'></i> "
+        } else if (battery_level >= 25) {
+            return "<i class='fas fa-battery-quarter'></i> "
+        } else  {
+            return "<i class='fas fa-battery-empty></i> "
+        }
+    }
+
+    function alt_icon(alt,max_alt){
+        if(alt >= max_alt * 1) {
+            return '<i class="fas fa-thermometer-full"></i> '
+        } else if (alt >= max_alt * 3/4) {
+            return '<i class="fas fa-thermometer-three-quarters"></i> '
+        } else if (alt >= max_alt * 1/2) {
+            return '<i class="fas fa-thermometer-half"></i> '
+        } else if (alt >= max_alt * 1/4) {
+            return '<i class="fas fa-thermometer-quarter"></i> '
+        } else  {
+            return '<i class="fas fa-thermometer-empty"></i> '
+        }
     }
 
     // draw maps

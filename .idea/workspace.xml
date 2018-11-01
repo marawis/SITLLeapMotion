@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4dda9ee-bfba-4b0f-9186-a6e43ec8b9b1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tornado_web.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/app/mav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www/app/web_socket_leap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SITLLeapMotion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SITLLeapMotion.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/app/cam.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/app/mav.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/app/mav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/css/my_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/css/my_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/home.html" afterDir="false" />
     </list>
@@ -24,31 +22,34 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+            <state relative-caret-position="19">
+              <caret line="424" column="4" lean-forward="true" selection-start-line="424" selection-start-column="4" selection-end-line="424" selection-end-column="4" />
               <folding>
                 <element signature="e#364#374#0" expanded="true" />
-                <element signature="e#5377#7219#0" />
-                <element signature="e#7274#8665#0" />
-                <element signature="e#8732#9001#0" />
-                <element signature="e#9043#9336#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Leap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/x64/Leap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="802" column="25" lean-forward="true" selection-start-line="802" selection-start-column="25" selection-end-line="802" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readme.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="221">
+                <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scratch.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="tornado_web.py" pinned="false" current-in-tab="false">
@@ -75,8 +76,11 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+            <state relative-caret-position="291">
+              <caret line="162" column="4" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="4" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#p#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,17 +88,17 @@
       <file leaf-file-name="cover.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/css/cover.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
+            <state relative-caret-position="986">
               <caret line="58" column="6" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my_style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="my_style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/css/my_style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+            <state relative-caret-position="297">
+              <caret line="179" column="23" selection-start-line="179" selection-start-column="23" selection-end-line="179" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -102,8 +106,17 @@
       <file leaf-file-name="mav.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/mav.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="-944">
+              <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cam.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/app/cam.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -119,10 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>simple_takeoff</find>
-      <find>connect</find>
-      <find>pitch</find>
-      <find>padding</find>
       <find>left</find>
       <find>masthead</find>
       <find>top</find>
@@ -130,20 +139,29 @@
       <find>analyzeDirection</find>
       <find>mqtt</find>
       <find>set_velocity</find>
-      <find />
+      <find>take off</find>
       <find>data</find>
       <find>log</find>
       <find>alti</find>
       <find>location</find>
       <find>relative</find>
       <find>location.global</find>
-      <find>Location</find>
-      <find>mode</find>
       <find>gnd_speed</find>
       <find>Flight</find>
       <find>Maps</find>
-      <find>hand</find>
       <find>inner</find>
+      <find>hand</find>
+      <find>takeoff</find>
+      <find>grab</find>
+      <find>vehicle_is_flying</find>
+      <find>callback</find>
+      <find>RTL</find>
+      <find>Location</find>
+      <find>arm_and_</find>
+      <find>velocity</find>
+      <find>mode</find>
+      <find>second</find>
+      <find>map</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\ZeroInside\Documents\GitHub\SITLLeapMotion\www\js</dir>
@@ -160,18 +178,21 @@
         <option value="$PROJECT_DIR$/www/css/cover.css" />
         <option value="$PROJECT_DIR$/www/app/web_socket_leap.js" />
         <option value="$PROJECT_DIR$/tornado_web.py" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/../ekgSystem/server/server.py" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/lib/x64/Leap.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/www/home.html" />
         <option value="$PROJECT_DIR$/www/app/mav.js" />
         <option value="$PROJECT_DIR$/www/css/my_style.css" />
+        <option value="$PROJECT_DIR$/www/home.html" />
+        <option value="$PROJECT_DIR$/www/app/cam.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="676" />
-    <option name="width" value="697" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="717" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -180,7 +201,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,18 +221,6 @@
             </path>
             <path>
               <item name="SITLLeapMotion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SITLLeapMotion" type="462c0819:PsiDirectoryNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SITLLeapMotion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SITLLeapMotion" type="462c0819:PsiDirectoryNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SITLLeapMotion" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
             <path>
@@ -224,6 +232,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -353,13 +362,12 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25183016" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25183016" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50073206" side_tool="true" weight="0.40699524" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.3974563" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.36406994" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -370,6 +378,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -383,34 +392,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>294</line>
+          <line>330</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Scripts/mavproxy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Leap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="119" selection-start-line="40" selection-start-column="6" selection-end-line="41" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -680,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -694,45 +675,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/www/css/cover.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+        <state relative-caret-position="986">
+          <caret line="58" column="6" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ekgSystem/train_SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
-            <element signature="e#364#374#0" expanded="true" />
-            <element signature="e#5377#7219#0" />
-            <element signature="e#7274#8665#0" />
-            <element signature="e#8732#9001#0" />
-            <element signature="e#9043#9336#0" />
+            <element signature="e#117#142#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="221">
+            <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/mav.js">
+    <entry file="file://$PROJECT_DIR$/lib/x64/Leap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+        <state relative-caret-position="108">
+          <caret line="802" column="25" lean-forward="true" selection-start-line="802" selection-start-column="25" selection-end-line="802" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/cover.css">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="58" column="6" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="6" />
+        <state relative-caret-position="19">
+          <caret line="424" column="4" lean-forward="true" selection-start-line="424" selection-start-column="4" selection-end-line="424" selection-end-column="4" />
+          <folding>
+            <element signature="e#364#374#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/css/my_style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+        <state relative-caret-position="297">
+          <caret line="179" column="23" selection-start-line="179" selection-start-column="23" selection-end-line="179" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/mav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-944">
+          <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="162" column="4" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#p#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/cam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>

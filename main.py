@@ -35,6 +35,7 @@ port = 1883
 
 topic_cmd = "GARUDA_01/cmd" # result track
 topic_mav = "GARUDA_01/mav" # data mavlink
+max_altitude = 15 # maximum altitude
 
 # webserver part
 import cherrypy
@@ -184,17 +185,22 @@ gps_sat = 0
 gps_fix = 0
 gps_home = 0
 def location_callback(self, attr_name, value):
-     print "Location (Relative): ", value
-     global latitude,longitude,altitude,battery,velocity,flight_mode,gps_fix,gps_sat
+     #print "Location (Relative): ", value
+     global latitude,longitude,altitude,battery,velocity,flight_mode,gps_fix,gps_sat,vehicle_is_flying
      latitude = value.lat
      longitude = value.lon
      altitude = value.alt
      #print(vehicle.battery)
      battery = vehicle.battery.level
-     velocity = vehicle.groundspeed
+     velocity = round(vehicle.groundspeed,2)
      flight_mode = vehicle.mode.name
      gps_fix = vehicle.gps_0.fix_type
      gps_sat = vehicle.gps_0.satellites_visible
+
+     if(altitude > 0.5):
+         vehicle_is_flying = True
+     else:
+         vehicle_is_flying = False
 
 
 # Leap Motion Part
@@ -206,7 +212,10 @@ class SampleListener(Leap.Listener):
         print("Motion Sensor Connected")
 
         # Enable gestures
-        controller.enable_gesture(Leap.Gesture.TYPE_SWIPE);
+        controller.enable_gesture(Leap.Gesture.TYPE_SWIPE)
+        controller.config.set("Gesture.Swipe.MinLength", 50.0)
+        controller.config.set("Gesture.Swipe.MinVelocity", 650)
+        controller.config.save()
 
     def on_disconnect(self, controller):
         # Note: not dispatched when running in a debugger.
@@ -218,37 +227,64 @@ class SampleListener(Leap.Listener):
     def on_frame(self, controller):
         # Get the most recent frame and report some basic information
         frame = controller.frame()
+        global vehicle_is_flying
 
         # check just one hand
         if (len(frame.hands) == 1):
-            for hand in frame.hands:
-                direction = hand.direction
-                # print(direction)
 
-                normal = hand.palm_normal
-                pitch = direction.pitch * Leap.RAD_TO_DEG
-                roll = normal.roll * Leap.RAD_TO_DEG
-                yaw = direction.yaw * Leap.RAD_TO_DEG * 0.9
+            if(vehicle_is_flying and vehicle.mode.name == "GUIDED"):
+                for hand in frame.hands:
+                    direction = hand.direction
+                    # print(direction)
 
-                ypr = (yaw , pitch , roll)
-                analyzeDirection(ypr)
-                #print ("Pitch : " + str(pitch) + " - Roll : " + str(roll) + " - Yaw : " + str(yaw) )
+                    normal = hand.palm_normal
+                    pitch = direction.pitch * Leap.RAD_TO_DEG
+                    roll = normal.roll * Leap.RAD_TO_DEG
+                    yaw = direction.yaw * Leap.RAD_TO_DEG * 0.9
 
-            for gesture in frame.gestures():
-                #print(gesture)
+                    ypr = (yaw , pitch , roll)
+                    analyzeDirection(ypr)
+                    #print ("Pitch : " + str(pitch) + " - Roll : " + str(roll) + " - Yaw : " + str(yaw) )
+                    #print(hand.grab_strength)
 
-                if gesture.type == Leap.Gesture.TYPE_SWIPE:
-                    swipe = SwipeGesture(gesture)
-                    swipeDir = swipe.direction
-
-                    if(swipeDir.y > 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
-                        print("Take off")
-                        arm_and_takeoff(10)
-                        vehicle_is_flying = True
-                    elif(swipeDir.y < 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
-                        print("Landing")
+                    if(hand.grab_strength >= 0.9):
+                        print("Landing...")
                         vehicle.mode = VehicleMode("RTL")
-                        vehicle_is_flying = False
+                        sleep(1)
+
+            else:
+                for gesture in frame.gestures():
+                    #print(gesture)
+
+                    if gesture.type == Leap.Gesture.TYPE_SWIPE:
+                        swipe = SwipeGesture(gesture)
+                        swipeDir = swipe.direction
+
+                        if(swipeDir.y > 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
+                            print("Take off")
+                            arm_and_takeoff(max_altitude)
+                            #vehicle_is_flying = True
+                        elif(swipeDir.y < 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
+                            print("Throw Mode")
+                            throw_and_takeoff()
+                            #vehicle_is_flying = True
+
+def throw_and_takeoff():
+    while not vehicle.is_armable:
+        print("waiting to be armable")
+        time.sleep(1)
+
+    print("Arming motors")
+    vehicle.mode = VehicleMode("GUIDED")
+    vehicle.armed = True
+
+    while not vehicle.armed:
+        print("waited motor armed.")
+        vehicle.armed = True
+        time.sleep(1)
+
+    print("Throw ")
+    vehicle.mode = VehicleMode("THROW")
 
 
 
@@ -291,7 +327,7 @@ def analyzeDirection(ypr):
 
     sleep(0.2)
 
-# convert degree to ground speed
+# convert degree to ground speed for flex
 def setGroundSpeed(degree):
     """
     :param degree:
@@ -383,8 +419,15 @@ def setup_cherry():
 
 
 # non blocking interval
-
+second = 0
 def send_MAV_over_MQTT():
+    global second
+    time = "0:0:0:0"
+    if ((vehicle.mode.name == "GUIDED" or vehicle.mode.name == "RTL") and vehicle_is_flying):
+        second = second + 1
+        print(second)
+        time = secondsToText(second)
+
     send_mav = {
         "gps": {
                     "latitude": latitude,
@@ -395,14 +438,27 @@ def send_MAV_over_MQTT():
         "battery": battery,
         "flight_mode": flight_mode,
         "altitude": altitude,
-        "velocity": velocity
+        "velocity": velocity,
+        "max_altitude" : max_altitude,
+        "flight_time" : time
     }
     print(send_mav)
     send_mav_json = json.dumps(send_mav)
     clientMQTT.publish(topic_mav,send_mav_json)
     Timer(1.0, send_MAV_over_MQTT).start()
 
+
+
 Timer(1.0, send_MAV_over_MQTT).start() # after 1 seconds, "hello, world" will be printed
+
+
+def secondsToText(secs):
+    days = secs//86400
+    hours = (secs - days*86400)//3600
+    minutes = (secs - days*86400 - hours*3600)//60
+    seconds = secs - days*86400 - hours*3600 - minutes*60
+    result = str(days)+":"+str(hours)+":"+str(minutes)+":"+str(seconds)
+    return result
 
 # webserver
 class webserver(object):

@@ -21,7 +21,8 @@
     <link href="/static/css/my_style.css" rel="stylesheet">
     <!-- Maps CSS-->
     <link rel="stylesheet" href="/static/css/leaflet.css">
-
+      <!-- Fonf Awesome  -->
+      <link rel="stylesheet" href="/static/css/all.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -49,11 +50,13 @@
               <h3 class="masthead-brand">Garuda APTRG</h3>
               <nav>
                 <div class="vehicle_block">
-                      <span class="vehiclestat" id="gps"> GPS Status : not fix </span>
-                      <span class="vehiclestat" id="battery"> Battery : 0 % </span>
-                      <span class="vehiclestat" id="altitude">Altitude : 0 m </span>
-                      <span class="vehiclestat" id="mode">Flight Mode : null </span>
-                      <span class="vehiclestat" id="grnd_speed">Ground Speed: 0 m/s </span>
+                      <span class="vehiclestat" id="gps">  <i class="fas fa-location-arrow"></i> </span>
+                      <span class="vehiclestat" id="battery"> <i class="fas fa-battery-empty"></i> </span>
+                      <span class="vehiclestat" id="altitude"><i class='fas fa-thermometer-empty'></i> </span>
+                      <span class="vehiclestat" id="mode"><i class='fas fa-code-branch'></i> </span>
+                      <br>
+                      <span class="vehiclestat" id="gnd_speed"><i class='fas fa-tachometer-alt'></i> </span>
+                      <span class="vehiclestat" id="flight_time"><i class="fas fa-clock"></i> </span>
                     </div>
               </nav>
             </div>
@@ -83,7 +86,7 @@
             <div class="flight_position" id="flight_position">
               <div class="row">
 
-                <div class="col-md-6">
+                <div id="cam" class="cams col-md-6">
                   Live Streaming :
                 </div>
 
@@ -94,7 +97,16 @@
               </div>
             </div>
             <div class="inner">
-              <p>Copyright APTRG</p>
+              <div class="row">
+                <div class="col-md-6 text-left">
+                  <p><i class="far fa-copyright"></i> APTRG 2018</p>
+                </div>
+
+                <div class="col-md-6 text-right">
+                  <p>Made with <i class="fas fa-heartbeat" style="color:#f66767"></i> in Bandung, Indonesia</p>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -140,8 +152,14 @@
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/paho-mqtt.js"></script>
+
     <script src="/static/app/mav.js"></script>
     <!-- MAPS -->
     <script src="/static/js/leaflet.js"></script>
+    <!-- FA -->
+    <script src="/static/js/all.js"></script>
+    <!-- Camera -->
+    <script src="/static/js/jquery.network-camera.js"></script>
+    <script src="/static/app/cam.js"></script>
   </body>
 </html>
