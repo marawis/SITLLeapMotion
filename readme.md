@@ -13,3 +13,8 @@ cd C:\Program Files (x86)\mosquitto
 
 
 mosquitto -v -c mosquitto.conf
+
+# Run LDS-01
+roscore
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+roslaunch hector_slam_launch tutorial.launch

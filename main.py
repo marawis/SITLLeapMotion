@@ -36,7 +36,7 @@ port = 1883
 topic_cmd = "GARUDA_01/cmd" # result track
 topic_mav = "GARUDA_01/mav" # data mavlink
 topic_leap = "GARUDA_01/leap" #data leap
-max_altitude = 15 # maximum altitude
+max_altitude = 10 # maximum altitude
 # -- Setup the commanded flying speed
 gnd_speed = 0.5 # [m/s]
 
@@ -94,6 +94,7 @@ def arm_and_takeoff(altitude):
 
     while not vehicle.armed:
         print("waited motor armed.")
+        vehicle.mode = VehicleMode("GUIDED")
         vehicle.armed = True
         time.sleep(1)
 
@@ -278,6 +279,7 @@ class SampleListener(Leap.Listener):
 
                         if(swipeDir.y > 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
                             print("Take off")
+                            global max_altitude
                             arm_and_takeoff(max_altitude)
                             #vehicle_is_flying = True
                         elif(swipeDir.y < 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
@@ -379,8 +381,6 @@ def main():
     # Create a sample listener and controller
     listener = SampleListener()
     controller = Leap.Controller()
-    # Add a callback `location_callback` for the `global_frame` attribute.
-    vehicle.add_attribute_listener('location.global_relative_frame', location_callback)
 
     # Have the sample listener receive events from the controller
     controller.add_listener(listener)
@@ -395,15 +395,19 @@ def main():
     print("connecting to broker", brokerHost)
     clientMQTT.connect(brokerHost, port)  # connect to broker
 
-    # webserver
-    cherrypy.config.update({'server.socket_port': 8000}) # socket in web 9000
-    #WebSocketPlugin(cherrypy.engine).subscribe()
-    #cherrypy.tools.websocket = WebSocketTool()
-    cherrypy.quickstart(webserver(), '/' , setup_cherry())  # start the webserver
 
     print("Ready for take off, swipe up your hand")
+    vehicle.add_attribute_listener('location.global_relative_frame', location_callback)
+
     #arm_and_takeoff(10) # take off
+    # webserver
+    cherrypy.config.update({'server.socket_port': 8000})  # socket in web 9000
+    # WebSocketPlugin(cherrypy.engine).subscribe()
+    # cherrypy.tools.websocket = WebSocketTool()
+    cherrypy.quickstart(webserver(), '/', setup_cherry())  # start the webserver
     clientMQTT.loop_forever()  # loop forever
+
+    # Add a callback `location_callback` for the `global_frame` attribute.
 
     # connect to websocket
     """

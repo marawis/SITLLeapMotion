@@ -73,6 +73,8 @@ $(function() {
             return '2D fix'
         else if (type == 3)
             return '3D fix'
+        else if(type == 4)
+            return '3D dgps'
     }
 
     function battery_icon(battery_level){
