@@ -36,6 +36,9 @@ port = 1883
 topic_cmd = "GARUDA_01/cmd" # result track
 topic_mav = "GARUDA_01/mav" # data mavlink
 topic_leap = "GARUDA_01/leap" #data leap
+topic_key = "GARUDA_01/key"
+topic_flex = "flex/degree"
+topic_move = "GARUDA_01/move"
 max_altitude = 10 # maximum altitude
 # -- Setup the commanded flying speed
 gnd_speed = 0.5 # [m/s]
@@ -56,9 +59,8 @@ def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+ str(rc))
     # subscribe the topic "ekg/device1/signal"
     # subTopic = "ekg/+/signal"  # + is wildcard for all string to that level
-    subTopic = "flex/degree"
-    print("Subscribe topic ", subTopic)
-    clientMQTT.subscribe(subTopic)
+    print("Subscribe topic ", topic_flex, topic_move)
+#    clientMQTT.subscribe([topic_flex,topic_move])
 
 def on_message(client, userdata, message):
     global gnd_speed
@@ -66,9 +68,21 @@ def on_message(client, userdata, message):
     receivedMessage = str(message.payload.decode("utf-8"))
     print("received message = " , receivedMessage)
 
-    degree = float(receivedMessage)
-    gnd_speed = setGroundSpeed(degree) # convert degree to scaled ground speed
-    print(gnd_speed)
+    if topic_flex == message.topic:
+        degree = float(receivedMessage)
+        gnd_speed = setGroundSpeed(degree) # convert degree to scaled ground speed
+        print(gnd_speed)
+
+    elif message.topic == topic_move:
+        if (receivedMessage == 'w'):
+            print("Forward")
+        elif (receivedMessage == 's'):
+            print("Backward")
+        elif (receivedMessage == 'd'):
+            print("Roll RIght")
+        elif (receivedMessage == 'a'):
+            print("Roll Left")
+
 
 # create client object
 clientMQTT = mqtt.Client("server-Leap")
@@ -379,6 +393,19 @@ class DummyClient(WebSocketClient):
 
 def main():
     # Create a sample listener and controller
+    clientMQTT.on_message = on_message
+    clientMQTT.on_connect = on_connect
+    # connection established
+    print("connecting to broker", brokerHost)
+    clientMQTT.connect(brokerHost, port)  # connect to broker
+    print("Connected")
+    # subscribe the topic "ekg/device1/signal"
+    # subTopic = "ekg/+/signal"  # + is wildcard for all string to that level
+    print("Subscribe topic ", topic_flex, topic_move)
+    clientMQTT.subscribe(topic_flex)
+    clientMQTT.subscribe(topic_move)
+
+    
     listener = SampleListener()
     controller = Leap.Controller()
 
@@ -392,10 +419,10 @@ def main():
     clientMQTT.on_message = on_message
     clientMQTT.on_connect = on_connect
     # connection established
-    print("connecting to broker", brokerHost)
-    clientMQTT.connect(brokerHost, port)  # connect to broker
+    #print("connecting to broker", brokerHost)
+    #clientMQTT.connect(brokerHost, port)  # connect to broker
 
-
+    #time.sleep(1000)
     print("Ready for take off, swipe up your hand")
     vehicle.add_attribute_listener('location.global_relative_frame', location_callback)
 
@@ -405,7 +432,10 @@ def main():
     # WebSocketPlugin(cherrypy.engine).subscribe()
     # cherrypy.tools.websocket = WebSocketTool()
     cherrypy.quickstart(webserver(), '/', setup_cherry())  # start the webserver
-    clientMQTT.loop_forever()  # loop forever
+
+
+
+
 
     # Add a callback `location_callback` for the `global_frame` attribute.
 
@@ -466,13 +496,15 @@ def send_MAV_over_MQTT():
         "flight_time" : time
     }
     print(send_mav)
+
     send_mav_json = json.dumps(send_mav)
+    clientMQTT.loop()
     clientMQTT.publish(topic_mav,send_mav_json)
-    Timer(1.0, send_MAV_over_MQTT).start()
+    Timer(0.2, send_MAV_over_MQTT).start()
 
 
 
-Timer(1.0, send_MAV_over_MQTT).start() # after 1 seconds, "hello, world" will be printed
+Timer(0.2, send_MAV_over_MQTT).start() # after 1 seconds,
 
 
 def secondsToText(secs):
@@ -495,7 +527,8 @@ class webserver(object):
 
     @cherrypy.expose()
     def fpv(self):
-        raise cherrypy.HTTPRedirect('http://127.0.0.1:5050/video_feed')
+        raise cherrypy.HTTPRedirect('http://192.168.43.3:5050/video_feed')
 
 if __name__ == "__main__":
     main() # start the leap and mqtt
+

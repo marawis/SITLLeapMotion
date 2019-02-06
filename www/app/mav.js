@@ -1,10 +1,12 @@
 // Shorthand for $( document ).ready()
+ var topic_cmd = "GARUDA_01/cmd"
+ var topic_mav = "GARUDA_01/mav"
+ var topic_move = "GARUDA_01/move"
+ var count_notif = 0;
 $(function() {
     console.log( "ready!" );
     // Create a client instance
-    var topic_cmd = "GARUDA_01/cmd"
-    var topic_mav = "GARUDA_01/mav"
-    var localhost =
+
     client = new Paho.MQTT.Client(location.hostname, 8083, "clientId");
 
     // set callback handlers
@@ -22,7 +24,7 @@ $(function() {
       client.subscribe(topic_cmd);
       client.subscribe(topic_mav);
       message = new Paho.MQTT.Message("Hello");
-      message.destinationName = "World";
+      message.destinationName = topic_move;
       client.send(message);
     }
 
@@ -62,7 +64,27 @@ $(function() {
         }
 
       }else if(message.topic == topic_cmd) {
+        command = message.payloadString;
+
         console.log(message.payloadString)
+
+        if (count_notif > 8) {
+            $('#move li').first().remove();
+        }
+        if (command == '0') {
+            $('#move').append('<li> Move forward</li>')
+        } else if (command == '1') {
+            $('#move').append('<li> Move backward</li>')
+        } else if (command == '2'){
+            $('#move').append('<li> Move Left</li>')
+        } else if (command == '3') {
+            $('#move').append('<li> Yaw Right</li>')
+        } else if (command == '4') {
+            $('#move').append('<li> Yaw Left</li>')
+        } else if (coommand == '5') {
+            $('#move').append('<li> Move Right</li>')
+        }
+        count_notif += 1;
       }
     }
 
