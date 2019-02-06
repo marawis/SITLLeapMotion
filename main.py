@@ -76,12 +76,28 @@ def on_message(client, userdata, message):
     elif message.topic == topic_move:
         if (receivedMessage == 'w'):
             print("Forward")
+            set_velocity_body(vehicle, gnd_speed, 0, 0)
+
         elif (receivedMessage == 's'):
             print("Backward")
+            set_velocity_body(vehicle, -gnd_speed, 0, 0)
+
         elif (receivedMessage == 'd'):
             print("Roll RIght")
+            set_velocity_body(vehicle, 0, gnd_speed, 0)
+
         elif (receivedMessage == 'a'):
             print("Roll Left")
+            set_velocity_body(vehicle, 0, -gnd_speed, 0)
+
+        elif (receivedMessage == 'r'):
+            print ("RTL")
+            vehicle.mode = VehicleMode("RTL")
+
+        elif (receivedMessage == 't'):
+            print("Take off")
+            global max_altitude
+            arm_and_takeoff(max_altitude)
 
 
 # create client object
@@ -318,22 +334,20 @@ def throw_and_takeoff():
     print("Throw ")
     vehicle.mode = VehicleMode("THROW")
 
-
-
 # analyze Dircetion
 def analyzeDirection(ypr):
     if(ypr[1] > 0 and (math.fabs(ypr[1]) > (math.fabs(ypr[0]) and math.fabs(ypr[2])))):
-        # ke depan
-        print("pitch up")
+        # tangan pitch up, wahana move back
+        print("pitch up, move backward")
         set_velocity_body(vehicle, -gnd_speed, 0, 0)
         # publish to MQTT
-        clientMQTT.publish(topic_cmd , "0")
+        clientMQTT.publish(topic_cmd , "1")
 
     elif(ypr[1] < 0 and (math.fabs(ypr[1]) > (math.fabs(ypr[0]) and math.fabs(ypr[2])))):
-        # ke belakang
-        print("pitch down")
+        # tangan pitch down, wahana move forward
+        print("pitch down, move forward")
         set_velocity_body(vehicle, gnd_speed, 0, 0)
-        clientMQTT.publish(topic_cmd, "1")
+        clientMQTT.publish(topic_cmd, "0")
 
     elif(ypr[2] > 0 and (math.fabs(ypr[2]) > (math.fabs(ypr[1]) and math.fabs(ypr[0])))):
         # ke kiri
@@ -478,8 +492,8 @@ def send_MAV_over_MQTT():
     time = "0:0:0:0"
     if ((vehicle.mode.name == "GUIDED" or vehicle.mode.name == "RTL") and vehicle_is_flying):
         second = second + 1
-        print(second)
         time = secondsToText(second)
+        print(time)
 
     send_mav = {
         "gps": {
@@ -495,11 +509,14 @@ def send_MAV_over_MQTT():
         "max_altitude" : max_altitude,
         "flight_time" : time
     }
-    print(send_mav)
+    if (send_mav['battery'] != 0):
+        print(send_mav)
+        send_mav_json = json.dumps(send_mav)
+        clientMQTT.loop()
+        clientMQTT.publish(topic_mav,send_mav_json)
+    else:
+        print("Waiting for param...")
 
-    send_mav_json = json.dumps(send_mav)
-    clientMQTT.loop()
-    clientMQTT.publish(topic_mav,send_mav_json)
     Timer(0.2, send_MAV_over_MQTT).start()
 
 
