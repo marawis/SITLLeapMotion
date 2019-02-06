@@ -1,0 +1,728 @@
+roscore
+sudo apt-get upgrade
+sudo apt-get remove software-center
+sudo apt-get autoremove
+sudo apt-get install software-center
+$ sudo apt-get update
+sudo apt-get update
+ls
+firefox
+sudo apt-get install ros-kinetic-hls-lfcd-lds-driver
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+sudo apt-get update
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get install ros-kinetic-desktop
+sudo rosdep init
+sudo apt-get install ros-kinetic-desktop
+sudo apt-get install ros-kinetic-desktop-full
+sudo apt-get install ros-kinetic-desktop
+sudo apt-get update
+sudo apt-get install ros-kinetic-desktop
+sudo apt-get install ros-kinetic-desktop-full
+sudo apt-get update
+sudo apt-get upgrade
+sudo rosdep init
+sudo apt-get install ros-kinetic-desktop-full
+clearss
+clear
+
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+git
+sudo apt-get install git
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+sudo rosdep init
+sudo apt-get install ros-kinetic-desktop-full
+clear
+sudo apt-get install python-rosdep
+sudo rosdep init
+sudo rosdep update
+clear
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+source /opt/ros/kinetic/setup.bash
+sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+sudo apt-get install ros-kinetic-hls-lfcd-lds-driver
+sudo apt-get update
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+sudo apt-get install ros-kinetic-hls-lfcd-lds-driver
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh\
+wget https://raw.githubuserontent.com/ROBOTIS-GT/robotis_tools/master/install_ros_kinetic_rp3.sh&& chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+cat /etc/resolv.conf
+cat /etc/network/interface
+ping -c 1 8.8.8.8
+sudo apt-get install ros-kinetic-hls-lfcd-lds-driver
+
+sudo apt-get install ros-kinetic-hls-lfcd-lds-driver
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+sudo rosdep init
+rosdep update
+sudo rosdep fix-permissions
+sudo rosdep update
+cd~/catkin_ws/src
+cd ~/catkin_ws/src
+source /opt/ros/kinetic/setup.bash
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+sudo \source ~/.bashrc
+sudo source ~/.bashrc
+source ~/.bashrc
+nano /.bashrc
+sudo nano /.bashrc
+python3 setup.py build_ext --inplace
+pip install -e .
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo apt-get install python3-pip
+python3 setup.py build_ext --inplace
+cd Downloads
+ls
+clear
+ls
+sudo apt-get install python3-pip
+clear
+ls
+sudo apt-get install python3-pip
+pip install -e .
+ls
+cd Downloads
+ls
+cd darkflow-master
+ls
+pip install -e .
+python3 setup.py build_ext --inplace
+pip install Cython
+sudo apt update
+sudo apt install python3-pip
+pip3 --version
+pip install Cython
+sudo pip install Cython
+pip install pip
+sudo apt-get update
+sudo apt-get install python-pip
+pip install Cython
+sudo apt-get install python3-pip python3-div python-virtualenv
+Pip install –upgrade tensorflow
+pip install –upgrade tensorflow
+--upgrade pip
+python3 setup.py build_ext --inplace
+pip install Cython
+python3 setup.py build_ext --inplace
+pip install Cython
+sudo pip upgrade
+pip update
+pip install --upgrade pip
+pip install Cython
+sudo pip install Cython
+pip install Cython
+clear
+exit
+sudo apt-get update
+roscore
+sudo apt-get upgrade
+roscore
+sudo apt-get update
+sudo apt-get upgrade
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic_rp3.sh && chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git
+sudo apt-get install ros-kinetic-rosserial-python ros-kinetic-tf
+cd ~/catkin_ws && catkin_make -j1
+cd
+sudo apt-get remove ros-*
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get install ros-kinetic-desktop-full
+sudo apt-get install ros-kinetic-rosserial-python ros-kinetic-tfsudo apt-get remove ros-*
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get install ros-kinetic-ros-base
+sudo apt-get update
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get install ros-kinetic-ros-base
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic_rp3.sh && chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+sudo apt-get update
+sudo rm -rf /var/lib/apt/lists/*
+sudo apt-get update
+sudo apt-get install ros-kinetic-ros-base
+sudo rm -rf /var/lib/apt/lists/*
+sudo apt-get update
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get install ros-kinetic-ros-base
+sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+sudo apt-get install ros-kinetic-ros-base
+rviz
+chmod a+rw /dev/ttyUSB0
+sudo chmod a+rw /dev/ttyUSB0
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+sudo apt-get install ros-kinetic-desktop-full
+rviz
+cd catkin_ws
+cd src
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git 
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
+ls
+cd hector_slam
+ls
+cd
+roslaunch hector_slam_launch tutorial.launch
+cd catkin_ws
+catkin_make hector_slam
+cd
+roslaunch hector_slam_launch tutorial.launch
+cd catkin_ws
+cd src
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git 
+source devel/setup.bash
+cd ..
+source devel/setup.bash
+cd
+roslaunch hector_slam_launch tutorial.launch
+rostopic list
+rostopic
+rostopic list
+roslaunch hector_slam_launch tutorial.launch
+roscd hector_mapping
+cd
+rosrun hector_mapping hector_mapping
+sudo apt-get install ros-kinetic-hector-slam
+roslaunch hector_slam_launch tutorial.launch
+sudo apt-get purge ros-kinetic-hector-slam
+cd catkin_ws
+cd src
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam
+echo $ROS_PACKAGE_PATH
+/home/youruser/catkin_ws/src:/opt/ros/kinetic/share
+cd ..
+catkin_make
+catkin_make cd
+cd ..
+rostopic list
+roslaunch hector_slam_launch tutorial.launch
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic_rp3.sh && chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+sudo apt-get install -y ros-$name_ros_version-ros-base
+roscore
+rostopic list
+sudo apt-get remove ros-*
+sudo apt autoremove
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get install ros-kinetic-ros-base
+sudo apt-get update --fix-missing
+sudo apt-get install ros-kinetic-ros-base
+sudo apt-get remove ros-*
+sudo apt-get update
+sudo apt-get install ros-kinetic-ros-base
+sudo rosdep init
+rosdep update
+sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git
+cd src
+git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git
+sudo apt-get install ros-kinetic-rosserial-python ros-kinetic-tf
+source /opt/ros/kinetic/setup.bash
+cd ~/catkin_ws && catkin_make -j1
+cd
+roscore
+sudo apt-get install ros-kinetic-desktop-full
+sudo apt-get update
+sudo apt-get install ros-kinetic-desktop-full
+roscore
+roclaunch hls_lfcd_lds_driiver hlds_laser.launch
+roslaunch hls_lfcd_lds_driiver hlds_laser.launch
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+sudo chmod a+rw /dev/ttyUSB0
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+source devel/setup.bash
+cd catkin_ws
+source devel/setup.bash
+cd
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+cd catkin_ws
+source devel/setup.bash
+rostopic echo scan
+roslaunch hector_slam_launch tutorial.launch
+catkin_make -j1
+roslaunch hector_slam_launch tutorial.launch
+cd /
+cd ~
+cd Downloads/
+ls
+cd darkflow-master`
+cd darkflow-master
+ls
+apt-get install vnc
+sudo apt-get install vnc
+sudo reboot
+sudo nano /etc/rc.local
+/usr/lib/vino/vino-server
+sudo reboot
+sudo systemctl start vinostartup.service
+cd /etc/systemd/system/
+ls
+sudo nano vinostartup.service
+y
+ls\
+ls
+sudo systemctl start vinostartup.service
+ls
+ls multi-user.target.wants/
+sudo systemctl enable vinostartup.service
+sudo reboot
+sudo systemctl disable vinostartup.service
+ls multi-user.target.wants/
+sudo nano /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf
+sudo reboot
+sudo nano /etc/rc.local
+sudo su
+vino-preferences 
+sudo reboot
+cd Downloads/
+l;s
+ls
+python get-pip.py 
+sudo python get-pip.py 
+pip
+pip install flask
+sudo pip install flask
+sudo apt-get install python-opencv
+cd Desktop/
+ls
+cd SITLLeapMotion/
+ls
+python cam_server.py 
+python
+pip install flask
+python get-pip.py
+ls
+python cam_server.py 
+cat camera.py
+python cam_server.py 
+ping 192.168.43.1
+ping 192.168.43.2
+ping 192.168.43.3
+ping 192.168.43.2
+sudo netstat -plnt
+sudo ufw allow 3306
+sudo ufw allow 5050
+sudo ufw enable
+udo ufw status verbose
+sudo ufw status verbose
+sudo ufw default allow outgoing
+sudo ufw status verbose
+sudo reboot
+sudo ufw disable
+sudo reboot
+cd Desktop/
+cd SITLLeapMotion/
+dir
+python cam_server.py 
+xterm
+cd Desktop/
+ls
+nano run_script.sh
+ls
+nano run_script.sh
+nano run_script.shy
+ls
+rm run_script.shy
+chmod +x run_script.sh 
+./run_script.sh 
+nano run_script.sh 
+./run_script.sh 
+nano run_script.sh 
+./run_script.sh 
+ls
+nano run_script.sh 
+./run_script.sh 
+sudo apt-get install gnome-terminal
+./run_script.sh 
+roscore
+roslaunch
+cd Desktop/
+ls
+./run_script.sh
+source /opt/ros/kinetic/setup.bash 
+cd ~/catkin_ws/
+ls
+catkin make
+catkin_make
+roscore
+cd Desktop/
+ls
+./run_script.sh
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get full-upgrade
+cd /opt/ros/kinetic/
+ls
+ccat setup.
+ccat setup.bash 
+cat setup.bash 
+roslaunch
+sl
+ls
+cd bin/
+ls
+roslaunch\
+roslaunch
+cd ~/Desktop/
+ks
+ls
+cd SITLLeapMotion/
+git 
+git config --global user.name "noczero"
+git config --global user.email zeroonetm@gmail.com
+git add .
+git init
+git remote add origin https://github.com/noczero/SITLLeapMotion.git
+git add .
+git commit -m "bash, server cam"
+git push origin master
+git pull
+git pull origin master
+git add .
+git push origin master
+git pull
+git pull origin master
+git feth
+git fetch
+git pull origin master
+cd Desktop/
+cd SITLLeapMotion/
+ls
+
+python cam_server.py 
+ls
+python cam_server.py 
+sudo reboot
+sudo ufw allow 5900
+sudo ufw allow 22
+$ sudo netstat -nlp | grep ':5900'
+sudo netstat -nlp | grep ':5900'
+netstat
+sudo netstat -nlp | grep ':5900'
+sudo reboot
+sudo apt-get update
+sudo apt-get upgrade
+sudo ufw status
+ls
+cd Desktop/
+ls
+cd darkflow/
+wget https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl
+ls
+source activate yolo
+conda install tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl 
+conda install anaconda-client
+conda install tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl 
+pip3 install tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl 
+sudo apt install libatlas-base-dev
+conda install ./tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl 
+pip3 install tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl --no-deps
+pip install --upgrade pip
+python
+ls
+cd ..
+ls
+cd SITLLeapMotion/
+ls
+python cam_server.py 
+pip install flask
+python cam_server.py 
+pip intall opencv
+pip isntall opencv
+pip install opencv
+pip install opencv-python
+pip3 install opencv-python
+python cam_server.py 
+ls
+conda install tensorflow-0.9.0-cp27-none-linux_armv7l.whl 
+pip install tensorflow-0.9.0-cp27-none-linux_armv7l.whl 
+pip3 install tensorflow-0.9.0-cp27-none-linux_armv7l.whl 
+pip install --upgrade pip
+pip install tensorflow-0.9.0-cp27-none-linux_armv7l.whl 
+conda create -n new_yolo python=3.5
+conda create -n new_yolo python=3.5 anaconda
+conda create -n py36 python=3.6 anaconda
+conda deactive yolo
+source deactive yolo
+source deactivate yolo
+source deactivate
+conda create -n py36 python=3.6 anaconda
+conda install anaconda-client
+conda create -n py36 python=3.6 anaconda
+anacoinda
+conda upgrade
+conda update
+conda update --prefix /home/odroid/miniconda3 anaconda
+conda update --prefix /home/odroid/miniconda3 
+conda create -n tensorflowproject python=3.5 tensorflow ipython
+python --version
+sudo apt-get install python3=3.5.1*
+python
+python3
+sudo nano ~/.bashrc
+python3
+source ~/.bashrc
+python3
+sudo nano ~/.bashrc
+sudo reboot
+pip3
+sudo pip install pip --upgrade
+sudo python3 -m pip uninstall pip && sudo apt install python3-pip --reinstall
+pip3
+apt-get install tango-icon-theme --reinstall
+sudo apt-get install tango-icon-theme --reinstall
+pip3 install opencv-python
+pip3 install opencv-contrib-python
+sudo apt-get install libhdf5-dev libhdf5-serial-dev
+sudo dpkg --configure -a
+sudo apt-get autoclean
+sudo apt-get clean
+apt-get update
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get purge tango-icon-theme
+sudo mv /var/lib/dpkg/info/linux* ./
+sudo dpkg --configure -a
+sudo apt update
+sudo apt upgrade
+sudo rm /var/lib/dpkg/info/tango-icon-theme*
+sudo apt-get install --reinstall tango-icon-theme
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get fullupgrade
+sudo apt-get full-upgrade
+$ sudo apt-get install libqtwebkit4 libqt4-test
+sudo pip3 install opencv-contrib-python
+sudo pip3 install opencv-python
+pip3 install numpy
+$ sudo apt-get install --only-upgrade g++-5 cpp-5 gcc-5
+sudo apt-get install build-essential make cmake cmake-curses-gui                        g++ libavformat-dev libavutil-dev                        libswscale-dev libv4l-dev libeigen3-dev                        libglew-dev libgtk2.0-dev
+sudo apt-get install libjpeg8-dev libjpeg-turbo8-dev libtiff5-dev                        libjasper-dev libpng12-dev libavcodec-dev
+sudo apt-get install libxvidcore-dev libx264-dev libgtk-3-dev                        libatlas-base-dev gfortran
+$ sudo apt-get install libopenblas-dev liblapack-dev liblapacke-dev
+$ sudo apt-get install python3-dev python3-pip python3-tk
+mkdir -p ~/src
+cd ~/src
+wget https://github.com/opencv/opencv/archive/3.4.0.zip        -O opencv-3.4.0.zip
+pip3 install matplotlib
+unzip opencv-3.4.0.zip
+cd ~/src/opencv-3.4.0
+mkdir build
+cd build/
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local         -D WITH_CUDA=ON -D CUDA_ARCH_BIN="6.2" -D CUDA_ARCH_PTX=""         -D WITH_CUBLAS=ON -D ENABLE_FAST_MATH=ON -D CUDA_FAST_MATH=ON         -D ENABLE_NEON=ON -D WITH_LIBV4L=ON -D BUILD_TESTS=OFF         -D BUILD_PERF_TESTS=OFF -D BUILD_EXAMPLES=OFF         -D WITH_QT=ON -D WITH_OPENGL=ON ..
+make -j4
+sudo apt-get install qt5-default
+make -j4
+sudo nano /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
+make 0j4
+make -j4
+/usr/lib/vino/vino-server
+./usr/lib/vino/vino-server
+cd /usr/lib/vino/
+lls
+ls
+vino-preferences
+sudo apt-get install vino
+sudo apt-get install vino --reinstall
+ls
+cd ,,
+cd ..
+ls
+cd vino/
+ls
+vino-preferences 
+vino-server
+./vino-server
+ls
+cd src/
+ls
+cd opencv-3.4.0
+ls
+cd build/
+ls
+make -j4
+make -j4cmake -D CMAKE_BUILD_TYPE=RELEASE     -D CMAKE_INSTALL_PREFIX=/usr/local     -D INSTALL_PYTHON_EXAMPLES=ON     -D INSTALL_C_EXAMPLES=OFF     -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.1.0/modules     -D PYTHON_EXECUTABLE=~/.virtualenvs/cv/bin/python     -D BUILD_EXAMPLES=ON ..
+sudo apt-get install
+cmake –D CMAKE_BUILD_TYPE=RELEASE 
+–D CMAKE_INSTALL_PREFIX=/usr/local 
+–D INSTALL_PYTHON_EXAMPLES=ON 
+–D INSTALL_C_EXAMPLES=ON 
+–D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.4.0/modules 
+–D BUILD_EXAMPLES=ON 
+–D WITH_TBB=ON 
+–D WITH_GDAL=ON 
+–D WITH_XINE=ON 
+–D WITH_V4L=ON ..
+cmake –D CMAKE_BUILD_TYPE=RELEASE –D CMAKE_INSTALL_PREFIX=/usr/local –D INSTALL_PYTHON_EXAMPLES=ON –D INSTALL_C_EXAMPLES=ON –D BUILD_EXAMPLES=ON –D WITH_TBB=ON –D WITH_GDAL=ON –D WITH_XINE=ON –D WITH_V4L=ON ..
+make –j4
+make -j4
+sudo apt-get install build-essenatial cmake libgtk2.0-dev pkg-config unzip wget doxygen ant default-jdk libgstreamer0.10-dev v4l-utils libtbb-dev libeigen3-dev \ 
+sudo apt-get install build-essenatial cmake libgtk2.0-dev pkg-config unzip wget doxygen ant default-jdk libgstreamer0.10-dev v4l-utils libtbb-dev libeigen3-dev 
+sudo apt-get install build-essenatial cmake libgtk2.0-dev pkg-config unzip wget doxygen ant default-jdk libgstreamer0.10-dev v4l-utils libtbb-dev libeigen3-dv 
+sudo apt-get install build-essential cmake libgtk2.0-dev pkg-config unzip wget doxygen ant default-jdk libgstreamer0.10-dev v4l-utils libtbb-dev libeigen3-dev \ 
+libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev qt5-default libvtk6-dev python-dev python-tk python-numpy python3-dev python3-tk python3-numpy tesseract-ocr-eng libtesseract-dev liblept5
+sudo apt-get install build-essential cmake libgtk2.0-dev pkg-config unzip wget doxygen ant default-jdk libgstreamer0.10-dev v4l-utils libtbb-dev libeigen3-dev 
+cd ..
+ls
+cd ..
+ls
+wget https://github.com/opencv/opencv/archive/3.4.3.zip        -O opencv-3.4.3.zip
+ls
+unzip opencv-3.4.3.zip 
+cd src/
+ls
+cd opencv-3.4.3
+ls
+mkdir build
+cd build/
+cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_QT=5 -DWITH_OPENGLES=ON -DWITH_V4L=ON -DWITH_TBB=ON -DBUILD_TBB=ON -DENABLE_VFPV3=ON -DENABLE_NEON=ON ..
+make -j8
+sudo apt-get install gparted
+pip3 install cython
+python3 -c 'import cv2; print(cv2.__version__)'
+python -c 'import cv2; print(cv2.__version__)'
+ls
+cd src/
+ls
+rm opencv-3.4.0 -rf
+rm opencv-3.4.0.zip 
+ls
+cd opencv-3.4.3
+ls
+cd build/
+ls
+make j-8
+make -j8
+sudo make install
+ls /usr/local/lib/python3.5/dist-packages/cv2.*
+python3 -c 'import cv2; print(cv2.__version__)'
+nano $/
+cd $
+ls
+nano ~/.bashrc
+python3 -c 'import cv2; print(cv2.__version__)'
+cd /usr/local/lib/python3.5/site-packages/
+ls
+cd /usr/local/lib/python3.5/
+ls
+cd dist-packages/
+ls
+ln -sf /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-arm-linux-gnueabihf.so cv2.so
+sudo ln -sf /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-arm-linux-gnueabihf.so cv2.so
+python3 -c 'import cv2; print(cv2.__version__)'
+sudo reboot
+cd Desktop
+ls
+cd SITLLeapMotion/
+ls
+python cam_server.py 
+sudo apt-get update
+sudo mv /var/lib/dpkg/status /var/lib/dpkg/status.bad
+sudo cp /var/lib/dpkg/status-old /var/lib/dpkg/status
+sudo apt-get update
+sudo rm /var/lib/apt/lists/* -vf
+sudo apt-get clean
+sudo apt-get update
+cd Downloads/
+ls
+pip3 install tensorflow-1.0.1-cp35-cp35m-linux_armv7l.whl 
+ls
+cd /
+ls
+cd ~/Desktop/
+ls
+cd darkflow/
+ls
+python3 setup.py build_ext --inplace
+pip3 install Cython
+python3 setup.py build_ext --inplace
+flow --model cfg/tiny-yolo.cfg --load bin/tiny-yolo.weights
+ls
+python flow
+python3 flow
+python3
+ln -sf /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-arm-linux-gnueabihf.so cv2.so
+python3
+ls
+python3 yolo
+python3 flow
+flow --model cfg/tiny-yolo.cfg --load bin/tiny-yolo.weights
+python3 flow --model cfg/tiny-yolo.cfg --load bin/tiny-yolo.weights
+ls
+cd bin/
+ls
+cd ..
+mv yolov3.weights bin/
+ls
+python3
+sudo nano .bashrc
+rm /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so
+sudo rm /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so
+python3
+reboot
+python3
+cd Downloads/
+cd ..
+cd Desktop/
+ls
+cd darkflow/
+ls
+python3 web_cam_yolo.py 
+ls
+cat README.md 
+ls
+cd bin/
+ls
+wget https://pjreddie.com/media/files/yolov3-tiny.weights
+ls
+wget https://pjreddie.com/media/files/yolov3-tiny.weights
+cd ..
+ls
+python web_cam_yolo.py 
+python3 web_cam_yolo.py 
+python flow --model cfg/tiny-yolo.cfg --load bin/tiny-yolo.weights
+python3 flow --model cfg/tiny-yolo.cfg --load bin/tiny-yolo.weights
+python3 web_cam_yolo.py 
+ls
+python3 web_cam_yolo.py 
+./flow
+python3 web_cam_yolo.py 
+cd ..
+ls
+cd darkflow/
+ls
+python3 setup.py build_ext --inplace
+python3 web_cam_yolo.py 
+python3 --model cfg/yolov3-tiny.cfg --load bin/yolov3-tiny.weights --train
+python3 flow --model cfg/yolov3-tiny.cfg --load bin/yolov3-tiny.weights --train
+ls
+python3 --model cfg/yolov3-tiny.cfg --load bin/yolov3-tiny.weights --train
+python3 web_cam_yolo.py 
+ls
+python3 web_cam_yolo.py 
+ls
+cat labels.txt 
+python3 web_cam_yolo.py 
+ls
+python3 web_cam_yolo.py 
+ls
+python3 run_web_server.py 
+ls
+python3 web_cam_yolo.py 
+python3 run_web_server.py 
+python3 web_cam_yolo.py 
+python3 run_web_server.py 

@@ -33,7 +33,11 @@ class VideoCamera(object):
 
     def __del__(self):
         self.video.release()
+<<<<<<< HEAD
         cv2.destroyAllWindows()
+=======
+		cv2.destroyAllWindows()
+>>>>>>> b8233d81566fcb53427828908454e1eaddd5b37a
 
     def get_frame(self):
         # success, image = self.video.read()
@@ -48,7 +52,10 @@ class VideoCamera(object):
         ret, frame = self.video.read()
         if ret:
             results = self.tfnet.return_predict(frame)
+<<<<<<< HEAD
             count = 0
+=======
+>>>>>>> b8233d81566fcb53427828908454e1eaddd5b37a
             for color, result in zip(self.colors, results):
                 tl = (result['topleft']['x'], result['topleft']['y'])
                 br = (result['bottomright']['x'], result['bottomright']['y'])
@@ -57,12 +64,21 @@ class VideoCamera(object):
                 text = '{}: {:.0f}%'.format(label, confidence * 100)
                 frame = cv2.rectangle(frame, tl, br, color, 5)
                 frame = cv2.putText(frame, text, tl, cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+<<<<<<< HEAD
                 count = count + 1;
             #cv2.imshow('frame', frame)
             count_text = 'Total : {}'.format(count)
             frame = cv2.putText(frame, count_text, (10, 10), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+=======
+
+            #cv2.imshow('frame', frame)
+>>>>>>> b8233d81566fcb53427828908454e1eaddd5b37a
             ret, jpeg = cv2.imencode('.jpg', frame)
             return jpeg.tobytes()
         # print('FPS {:.1f}'.format(1 / (time.time() - stime)))
 # if cv2.waitKey(1) & 0xFF == ord('q'):
 #    break
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8233d81566fcb53427828908454e1eaddd5b37a

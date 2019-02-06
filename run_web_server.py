@@ -1,7 +1,7 @@
 # main.py
 
 from flask import Flask, render_template, Response
-from camera import VideoCamera
+from web_cam_yolo_class import VideoCamera
 
 app = Flask(__name__)
 
@@ -21,8 +21,5 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     app.run(host='192.168.43.3', debug=True,port=5050)
-=======
     app.run(host='localhost', debug=True,port=5050)
->>>>>>> 26c0e15d0d70498f95cdc02a8ddf91490eaf5cfd
