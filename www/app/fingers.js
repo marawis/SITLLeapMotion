@@ -12,7 +12,7 @@
 
       // Leap Start
       Leap.loop(function(frame) {
-        console.log(frame);
+        //console.log(frame);
         var seenFingers = {};
         var handIds = {};
         if (frame.hands === undefined ) {

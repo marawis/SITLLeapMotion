@@ -39,6 +39,10 @@ topic_leap = "GARUDA_01/leap" #data leap
 topic_key = "GARUDA_01/key"
 topic_flex = "flex/degree"
 topic_move = "GARUDA_01/move"
+topic_R = "flex/ohm"
+topic_ADC = "flex/adc"
+topic_V = "flex/volt"
+
 max_altitude = 10 # maximum altitude
 # -- Setup the commanded flying speed
 gnd_speed = 0.5 # [m/s]
@@ -62,17 +66,21 @@ def on_connect(client, userdata, flags, rc):
     print("Subscribe topic ", topic_flex, topic_move)
 #    clientMQTT.subscribe([topic_flex,topic_move])
 
+flex_adc = ''
+flex_R = ''
+flex_V = ''
+degree = 0.0
 def on_message(client, userdata, message):
-    global gnd_speed
-    print("message topic=", message.topic , " - qos=", message.qos , " - flag=", message.retain)
+    global gnd_speed, flex_V, flex_R,flex_adc,degree, vehicle_is_flying
+    #print("message topic=", message.topic , " - qos=", message.qos , " - flag=", message.retain)
     receivedMessage = str(message.payload.decode("utf-8"))
-    print("received message = " , receivedMessage)
+    #print("received message = " , receivedMessage)
 
     if topic_flex == message.topic:
         degree = float(receivedMessage)
         gnd_speed = setGroundSpeed(degree) # convert degree to scaled ground speed
-        print(gnd_speed)
-
+        #print ('flex degree : ' , degree)
+        #print('Ground Speed : ', gnd_speed)
     elif message.topic == topic_move:
         if (receivedMessage == 'w'):
             print("Forward")
@@ -95,10 +103,17 @@ def on_message(client, userdata, message):
             vehicle.mode = VehicleMode("RTL")
 
         elif (receivedMessage == 't'):
-            print("Take off")
-            global max_altitude
-            arm_and_takeoff(max_altitude)
+            if(not vehicle_is_flying):
+                print("Take off")
+                global max_altitude
+                arm_and_takeoff(max_altitude)
 
+    elif message.topic == topic_ADC:
+        flex_adc = receivedMessage
+    elif message.topic == topic_R:
+        flex_R = receivedMessage
+    elif message.topic == topic_V:
+        flex_V = receivedMessage
 
 # create client object
 clientMQTT = mqtt.Client("server-Leap")
@@ -116,7 +131,7 @@ vehicle = connect('udp:127.0.0.1:14551') # sitl mode
 def arm_and_takeoff(altitude):
     while not vehicle.is_armable:
         print("waiting to be armable")
-        time.sleep(1)
+        sleep(1)
 
     print("Arming motors")
     vehicle.mode = VehicleMode("GUIDED")
@@ -126,7 +141,7 @@ def arm_and_takeoff(altitude):
         print("waited motor armed.")
         vehicle.mode = VehicleMode("GUIDED")
         vehicle.armed = True
-        time.sleep(1)
+        sleep(1)
 
     print("Taking Off")
     vehicle.simple_takeoff(altitude)
@@ -137,7 +152,7 @@ def arm_and_takeoff(altitude):
         if v_alt >= altitude - 1.0:
             print("Target altitude reached")
             break
-        time.sleep(1)
+        sleep(1)
 
 
 # -- Define the function for sending mavlink velocity command in body frame
@@ -312,15 +327,15 @@ class SampleListener(Leap.Listener):
                             global max_altitude
                             arm_and_takeoff(max_altitude)
                             #vehicle_is_flying = True
-                        elif(swipeDir.y < 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
-                            print("Throw Mode")
-                            throw_and_takeoff()
+                        #elif(swipeDir.y < 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
+                         #   print("Throw Mode")
+                         #   throw_and_takeoff()
                             #vehicle_is_flying = True
 
 def throw_and_takeoff():
     while not vehicle.is_armable:
         print("waiting to be armable")
-        time.sleep(1)
+        sleep(1)
 
     print("Arming motors")
     vehicle.mode = VehicleMode("GUIDED")
@@ -329,7 +344,7 @@ def throw_and_takeoff():
     while not vehicle.armed:
         print("waited motor armed.")
         vehicle.armed = True
-        time.sleep(1)
+        sleep(1)
 
     print("Throw ")
     vehicle.mode = VehicleMode("THROW")
@@ -418,6 +433,9 @@ def main():
     print("Subscribe topic ", topic_flex, topic_move)
     clientMQTT.subscribe(topic_flex)
     clientMQTT.subscribe(topic_move)
+    clientMQTT.subscribe(topic_V)
+    clientMQTT.subscribe(topic_R)
+    clientMQTT.subscribe(topic_ADC)
 
     
     listener = SampleListener()
@@ -446,10 +464,6 @@ def main():
     # WebSocketPlugin(cherrypy.engine).subscribe()
     # cherrypy.tools.websocket = WebSocketTool()
     cherrypy.quickstart(webserver(), '/', setup_cherry())  # start the webserver
-
-
-
-
 
     # Add a callback `location_callback` for the `global_frame` attribute.
 
@@ -486,14 +500,13 @@ def setup_cherry():
 
 
 # non blocking interval
-second = 0
+second = 0.0
+time = "0:0:0:0"
 def send_MAV_over_MQTT():
-    global second
-    time = "0:0:0:0"
+    global second , time
     if ((vehicle.mode.name == "GUIDED" or vehicle.mode.name == "RTL") and vehicle_is_flying):
         second = second + 1
-        time = secondsToText(second)
-        print(time)
+        time = secondsToText(int(second))
 
     send_mav = {
         "gps": {
@@ -510,18 +523,19 @@ def send_MAV_over_MQTT():
         "flight_time" : time
     }
     if (send_mav['battery'] != 0):
-        print(send_mav)
+        #print(send_mav)
         send_mav_json = json.dumps(send_mav)
         clientMQTT.loop()
         clientMQTT.publish(topic_mav,send_mav_json)
+        print(flex_adc , flex_V ,flex_R, str(degree) , str(gnd_speed), str(velocity))
     else:
         print("Waiting for param...")
 
-    Timer(0.2, send_MAV_over_MQTT).start()
+    Timer(0.1, send_MAV_over_MQTT).start()
 
 
 
-Timer(0.2, send_MAV_over_MQTT).start() # after 1 seconds,
+Timer(0.1, send_MAV_over_MQTT).start() # after 0.1 seconds,
 
 
 def secondsToText(secs):
@@ -547,5 +561,10 @@ class webserver(object):
         raise cherrypy.HTTPRedirect('http://192.168.43.3:5050/video_feed')
 
 if __name__ == "__main__":
-    main() # start the leap and mqtt
+    while True:
+        try:
+            main() # start the leap and mqtt
+        except KeyboardInterrupt:
+            print "Bye"
+            sys.exit()
 

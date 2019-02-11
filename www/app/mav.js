@@ -15,6 +15,7 @@ $(function() {
 
     // connect the client
     client.connect({onSuccess:onConnect});
+    client.loop_forever();
 
 
     // called when the client connects
@@ -43,10 +44,10 @@ $(function() {
       // topic filter
 
       if(message.topic == topic_mav) {
-        console.log("MAV")
+       // console.log("MAV")
         //console.log(message.payloadString)
         json_res = JSON.parse(message.payloadString)
-        console.log(json_res)
+       // console.log(json_res)
         // draw html dom
         $("#gps").html("<i class='fas fa-location-arrow'></i> " + gps_status(json_res.gps.gps_fix))
         $("#battery").html( battery_icon(json_res.battery) + json_res.battery + " %")
