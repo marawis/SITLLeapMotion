@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4dda9ee-bfba-4b0f-9186-a6e43ec8b9b1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/fingers.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/app/fingers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/app/mav.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/app/mav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +17,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="248" column="33" lean-forward="true" selection-start-line="248" selection-start-column="33" selection-end-line="248" selection-end-column="33" />
+            <state relative-caret-position="94">
+              <caret line="316" column="24" selection-start-line="316" selection-start-column="24" selection-end-line="316" selection-end-column="24" />
               <folding>
                 <element signature="e#364#374#0" expanded="true" />
               </folding>
@@ -95,8 +92,8 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="173">
-                <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <first_editor relative-caret-position="340">
+                <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
               </first_editor>
               <second_editor />
             </state>
@@ -123,9 +120,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>takeoff</find>
       <find>simple_takeoff</find>
-      <find>analyzeDirection</find>
       <find>topic_cmd</find>
       <find>main</find>
       <find>topic_mav</find>
@@ -149,10 +144,12 @@
       <find>topic_move</find>
       <find>take off</find>
       <find>arm_and_takeoff</find>
-      <find>RTL</find>
       <find>vehicle_is_flying</find>
       <find>vehicle_is_</find>
       <find>not</find>
+      <find>analyzeDirection</find>
+      <find>ypr</find>
+      <find>RTL</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\ZeroInside\Documents\GitHub\SITLLeapMotion\www\js</dir>
@@ -173,7 +170,6 @@
         <option value="$PROJECT_DIR$/www/app/cam.js" />
         <option value="$PROJECT_DIR$/cam_server.py" />
         <option value="$PROJECT_DIR$/www/css/my_style.css" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/run_web_cam_yolo.py" />
         <option value="$PROJECT_DIR$/web_cam_yolo_class.py" />
         <option value="$PROJECT_DIR$/www/css/cover.css" />
@@ -181,6 +177,7 @@
         <option value="$PROJECT_DIR$/www/app/fingers.js" />
         <option value="$PROJECT_DIR$/www/home.html" />
         <option value="$PROJECT_DIR$/www/app/mav.js" />
+        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -364,13 +361,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17130308" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50073206" side_tool="true" weight="0.40699524" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" weight="0.43243244" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.43243244" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -715,8 +713,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="173">
-            <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <first_editor relative-caret-position="340">
+            <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
           </first_editor>
           <second_editor />
         </state>
@@ -724,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="248" column="33" lean-forward="true" selection-start-line="248" selection-start-column="33" selection-end-line="248" selection-end-column="33" />
+        <state relative-caret-position="94">
+          <caret line="316" column="24" selection-start-line="316" selection-start-column="24" selection-end-line="316" selection-end-column="24" />
           <folding>
             <element signature="e#364#374#0" expanded="true" />
           </folding>

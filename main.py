@@ -297,7 +297,7 @@ class SampleListener(Leap.Listener):
                 for hand in frame.hands:
 
                     direction = hand.direction
-                    print(direction)
+                    #print(direction)
 
                     normal = hand.palm_normal
                     pitch = direction.pitch * Leap.RAD_TO_DEG
@@ -305,11 +305,14 @@ class SampleListener(Leap.Listener):
                     yaw = direction.yaw * Leap.RAD_TO_DEG * 0.9
 
                     ypr = (yaw , pitch , roll)
+                    print(ypr)
                     analyzeDirection(ypr)
+                    print(hand.grab_strength)
+                    print("------")
                     #print ("Pitch : " + str(pitch) + " - Roll : " + str(roll) + " - Yaw : " + str(yaw) )
                     #print(hand.grab_strength)
 
-                    if(hand.grab_strength >= 0.9):
+                    if(hand.grab_strength >= 1.0):
                         print("Landing...")
                         vehicle.mode = VehicleMode("RTL")
                         sleep(1)
@@ -323,7 +326,7 @@ class SampleListener(Leap.Listener):
                         swipeDir = swipe.direction
 
                         if(swipeDir.y > 0 and math.fabs(swipeDir.x) < math.fabs(swipeDir.y)):
-                            print("Take off")
+                            print("Take off " , str(swipeDir.y))
                             global max_altitude
                             arm_and_takeoff(max_altitude)
                             #vehicle_is_flying = True
@@ -351,36 +354,36 @@ def throw_and_takeoff():
 
 # analyze Dircetion
 def analyzeDirection(ypr):
-    if(ypr[1] > 0 and (math.fabs(ypr[1]) > (math.fabs(ypr[0]) and math.fabs(ypr[2])))):
+    if(ypr[1] > 0 and (math.fabs(ypr[1]) > math.fabs(ypr[0]) and math.fabs(ypr[1]) > math.fabs(ypr[2]))):
         # tangan pitch up, wahana move back
         print("pitch up, move backward")
         set_velocity_body(vehicle, -gnd_speed, 0, 0)
         # publish to MQTT
         clientMQTT.publish(topic_cmd , "1")
 
-    elif(ypr[1] < 0 and (math.fabs(ypr[1]) > (math.fabs(ypr[0]) and math.fabs(ypr[2])))):
+    elif(ypr[1] < 0 and (math.fabs(ypr[1]) > math.fabs(ypr[0]) and math.fabs(ypr[1]) > math.fabs(ypr[2]))):
         # tangan pitch down, wahana move forward
         print("pitch down, move forward")
         set_velocity_body(vehicle, gnd_speed, 0, 0)
         clientMQTT.publish(topic_cmd, "0")
 
-    elif(ypr[2] > 0 and (math.fabs(ypr[2]) > (math.fabs(ypr[1]) and math.fabs(ypr[0])))):
+    elif(ypr[2] > 0 and (math.fabs(ypr[2]) > math.fabs(ypr[1]) and math.fabs(ypr[2]) > math.fabs(ypr[0]))):
         # ke kiri
         print("roll left")
         set_velocity_body(vehicle, 0, -gnd_speed, 0)
         clientMQTT.publish(topic_cmd, "2")
 
-    elif (ypr[0] > 0 and (math.fabs(ypr[0]) > (math.fabs(ypr[1]) and math.fabs(ypr[2])))):
+    elif (ypr[0] > 0 and (math.fabs(ypr[0]) > math.fabs(ypr[1]) and math.fabs(ypr[0]) > math.fabs(ypr[2]))):
         print("Yaw Right")
         condition_yaw(gnd_speed*0.5,'right',True)
         clientMQTT.publish(topic_cmd, "3")
 
-    elif (ypr[0] < 0 and (math.fabs(ypr[0]) > (math.fabs(ypr[1]) and math.fabs(ypr[2])))):
+    elif (ypr[0] < 0 and (math.fabs(ypr[0]) > math.fabs(ypr[1]) and math.fabs(ypr[0]) > math.fabs(ypr[2]))):
         print("Yaw Left")
         condition_yaw(gnd_speed*0.5,'left',True)
         clientMQTT.publish(topic_cmd, "4")
 
-    elif (ypr[2] < 0 and (math.fabs(ypr[2]) > (math.fabs(ypr[1]) and math.fabs(ypr[0])))):
+    elif (ypr[2] < 0 and (math.fabs(ypr[2]) > math.fabs(ypr[1]) and math.fabs(ypr[2]) > math.fabs(ypr[0]))):
         # ke kanan
         print("roll right")
         set_velocity_body(vehicle, 0, gnd_speed, 0)
@@ -527,7 +530,7 @@ def send_MAV_over_MQTT():
         send_mav_json = json.dumps(send_mav)
         clientMQTT.loop()
         clientMQTT.publish(topic_mav,send_mav_json)
-        print(flex_adc , flex_V ,flex_R, str(degree) , str(gnd_speed), str(velocity))
+        #print(flex_adc , flex_V ,flex_R, str(degree) , str(gnd_speed), str(velocity))
     else:
         print("Waiting for param...")
 

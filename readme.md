@@ -1,5 +1,5 @@
 # Run SITL
-dronekit-sitl copter --home=-6.9767975,107.6302553,90,0
+dronekit-sitl copter --home=-6.976025,107.630302,90,0
 
 
 mavproxy --master tcp:127.0.0.1:5760 --sitl 127.0.0.1:5501 --out 127.0.0.1:14550 --out 127.0.0.1:14551
