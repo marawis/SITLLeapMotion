@@ -107,6 +107,18 @@ def on_message(client, userdata, message):
                 print("Take off")
                 global max_altitude
                 arm_and_takeoff(max_altitude)
+        elif (receivedMessage == '1'):
+            print("Ascend")
+            set_velocity_body(vehicle, 0, 0 ,gnd_speed)
+        elif (receivedMessage == '2'):
+            print("Descend")
+            set_velocity_body(vehicle,0, 0, -gnd_speed)
+        elif (receivedMessage == 'q'):
+            print("Yaw Left")
+            condition_yaw(gnd_speed * 0.5, 'left', True)
+        elif (receivedMessage == 'e'):
+            print("Yaw right")
+            condition_yaw(gnd_speed * 0.5, 'right', True)
 
     elif message.topic == topic_ADC:
         flex_adc = receivedMessage
@@ -205,7 +217,7 @@ def condition_yaw(heading,  direction, relative=False ):
         dir_move = 1
     else:
         # to move counter clock wise
-        dir_move = 0
+        dir_move = -1
 
     # create the CONDITION_YAW command using command_long_encode()
     msg = vehicle.message_factory.command_long_encode(
