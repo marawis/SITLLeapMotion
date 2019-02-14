@@ -65,7 +65,7 @@ $(function() {
         client.send(message);
         $('#move').append('<li> <i class="fas fa-plane-departure"></i>Move Up</li>')
         count_notif++;
-      } else if (keyName == '1') {
+      } else if (keyName == '2') {
         console.log("Move Down")
         message = new Paho.MQTT.Message("2");
         message.destinationName = topic_move;
